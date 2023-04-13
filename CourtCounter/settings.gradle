@@ -1,0 +1,31 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven {
+            url "https://storage.googleapis.com/download.flutter.io"
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url "https://storage.googleapis.com/download.flutter.io"
+        }
+    }
+}
+rootProject.name = "CourtCounter"
+include ':app'
+
+setBinding(new Binding([gradle:this]))
+
+evaluate(new File(
+        settingsDir.parentFile,
+        'counter_flutter/.android/include_flutter.groovy'
+))
+include ':counter_flutter'
+project(':counter_flutter').projectDir = new File('../counter_flutter')
